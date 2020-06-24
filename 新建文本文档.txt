@@ -1,0 +1,297 @@
+1.${tags}改4个空格
+2.出力缩进问题查看
+
+
+
+
+ProFixedVariable
+## ProFixedVariable
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variName}$!{dataKindName}（$!{dataType}）
+##
+
+ProVariable
+## ProVariable
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variName}（$!{dataType}）#if("$!{initValue}"!="")＝$!{initValue}#end
+##
+
+
+ProObjVariable
+## ProObjVariable
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variName}（$!{dataType}）#if("$!{isInstance}"=="1")＝new Instance（）#end
+##
+
+
+ProDtoVariable
+## ProObjVariable
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variName}（$!{dtoName}）#if("$!{isInstance}"=="1")＝new Instance（）#end
+##
+
+
+ProListVariable
+## ProListVariable
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variName}（List＜#if("$!{dataKind}"=="01" || "$!{dataKind}"=="02")$!{dataType}#else$!{dtoName}#end＞）#if("$!{isInstance}"=="1")＝new Instance（）#end
+##
+
+
+ProMapVariable
+## ProMapVariable
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variName}（Map＜K，#if("$!{dataKind}"=="01" || "$!{dataKind}"=="02")$!{dataType}#else$!{dtoName}#end＞）#if("$!{isInstance}"=="1")＝new Instance（）#end
+##
+
+
+
+ProDBQuery
+## ProDBQuery
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{outDtoVariable}＝$!{sqlName}（$!{inDtoVariable}#if("$!{queryType}"=="02")，$!{pageVariable}#end）
+##
+
+ProDBUpdate
+## ProDBUpdate
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{outVariable}＝$!{sqlName}（$!{inDtoVariable}）
+##
+
+
+
+ProIf
+## ProIf
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabs}分岐条件は以下のとおりです。
+$!{tabsMore}$!{conditions}
+$!{children}
+##
+
+
+ProElseIf
+## ProIf
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabs}分岐条件は以下のとおりです。
+$!{tabsMore}$!{conditions}
+$!{children}
+##
+
+
+
+ProElse
+## ProElse
+$!{tabs}$!{desc} 　　　　　←($!{id})
+
+$!{children}
+##
+
+
+
+ProLoop
+## ProLoop
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}#if($!{loopType}=="01") foreach（Object $!{iterateVariable}＿繰返し変数 : $!{iterateVariable}）#else while（$!{conditions}）#end
+
+$!{children}
+##
+
+
+
+ProLoopBreak
+## ProLoopBreak
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}Break；
+##
+
+
+ProLoopContinue
+## ProLoopContinue
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}Continue；
+
+##
+
+
+
+ProAssign
+## ProAssign
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}#if($!{assignToType} == "01")$!{assignToVariable}#elseif($!{assignToType} == "02")$!{assignToDtoVariable}．$!{assignToDtoAttr}#elseif($!{assignToType} == "03")$!{assignToObjectVariable}．$!{assignToObjectAttr}#end＝#if($!{assignFromType} == "01")$!{assignFromVariable}#elseif($!{assignFromType} == "02")$!{assignFromDtoVariable}．$!{assignFormDtoAttr}#elseif($!{assignFromType} == "03")$!{assignFormObjectVariable}．$!{assignFormObjectAttr}#elseif($!{assignFromType} == "04")$!{assignFromAtm}#elseif($!{assignFromType} == "05")$!{assignFromInput}#end
+
+##
+
+
+
+
+ProAssignAtm
+## ProAssignAtm
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{assignAtm}
+##
+
+ProEventAssignJson
+## ProEventAssignJson
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}JSON：$!{assignFromJson}
+##
+
+
+
+ProCopyDTO
+## PrcBizCopyDTO
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}#if($!{copyType} == "01")$!{assignToDtoVariable}＝$!{assignFromDtoVariable}#elseif($!{copyType} == "02")$!{selects}#end
+##
+
+
+
+ProUtility
+## ProUtility
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}#if("$!{returnVariable}"!="")$!{returnVariable}＝#end$!{utilityName}（$!{params}）
+##
+
+
+
+ProInvokeObjectMethod
+## ProInvokeObjectMethod
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}#if("$!{returnVariable}"!="")$!{objectVariable}＝#end#if("$!{invokeType}"=="01")$!{objectVariable}#else$!{objectDataTypeName}#end．$!{methodName}（$!{params}）
+##
+
+
+
+ProNew
+## ProNew
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variable}＝new Instance（$!{params}）
+##
+
+ProWriteCsvFile
+## ProWriteCsvFile
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}CSV．ファイル名＝$!{fileName}
+$!{tabsMore}CSV．データ＝$!{csvVariable}
+$!{tabsMore}CSV．ヘッダ＝#if("$!{noHeader}==1")なし#elseあり#end
+##
+
+
+
+ProReadCsvFile
+## ProReadCsvFile
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}CSV．取込みファイル名＝$!{fileName}
+$!{tabsMore}CSV．データ＝$!{csvVariable}
+##
+
+
+
+
+ProEventForward
+## ProEventForward
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}Forward（#if("$!{forwardType}"=="01")メイン画面#elseサブ画面#end，$!{forwardViewName}#if("$!{mappingVariable}"!="")，$!{mappingVariable}#end）
+$!{tabsMore}コールバック＝#if("$!{callbackName}"!="")$!{callbackName}#elseなし#end
+##
+
+
+
+
+ProEventHttp
+## ProEventHttp
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}#if("$!{outputVariable}"!="")$!{outputVariable}＝#end（POST）$!{bizlogicName}（$!{inputVariable}）
+$!{tabsMore}事前メッセージ＝#if("$!{beforeMessage}"!="")$!{beforeMessage}#elseなし#end
+$!{tabsMore}事後メッセージ＝#if("$!{afterMessage}"!="")$!{afterMessage}#elseなし#end
+$!{tabsMore}後処理＝#if("$!{afterMethodName}"!="")$!{afterMethodName}#elseなし#end
+##
+
+
+
+ProEventGetJsonValue
+## PrcEventGetJsonValue
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{variable}＝$!{jsonVariable}．$!{jsonAttr}
+##
+
+
+
+ProMailSender
+## ProMailSender
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}#if("$!{returnVariable}"!="")$!{returnVariable}＝#endメール送信（$!{mailVariable}）
+##
+
+
+
+ProGetMessage
+## ProGetMessage
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{messageVariable}＝$!{messageName}#if("$!{params}"!="")（$!{params}）#end
+##
+
+
+ ProLog
+## ProLog
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}Log.$!{logType}（$!{messageName}#if("$!{params}"!="")（$!{params}）#end）
+##
+
+
+ProEventDialog
+## ProEventDialog
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}ダイアログ．タイプ＝#if("$!{dialogType}"=="01")確認#else警告#end
+$!{tabsMore}ダイアログ．メッセージ＝$!{message}#if("$!{params}"!="")（$!{params}）#end
+$!{tabsMore}ダイアログ．確定処理名＝#if("$!{yesMethodName}"!="")$!{yesMethodName}#elseなし#end
+$!{tabsMore}ダイアログ．キャンセル処理名＝#if("$!{noMethodName}"!="")$!{noMethodName}#elseなし#end
+##
+
+
+ProReturn
+## ProReturn
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}Return；
+
+##
+
+
+
+ProThrowException
+## ProThrowException
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}throw new $!{exceptionName}（$!{params}）
+$!{children}
+##
+
+
+ProTry
+## ProTry
+$!{tabs}$!{desc} 　　　　　←($!{id})
+
+$!{children}
+##
+
+
+ProCatch
+## ProCatch
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore}$!{exceptionName}例外の場合
+$!{children}
+##
+
+
+ProFinally
+## ProFinally
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{children}
+##
+
+
+ProSourceInput
+## ProSourceInput
+$!{tabs}$!{desc} 　　　　　←($!{id})
+$!{tabsMore} $!{source}
+##
+
